@@ -1,3 +1,4 @@
+import { HomeComponent } from './home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductsListComponent } from './products/products-list/products-list.component';
@@ -10,7 +11,29 @@ export const COMPONENTS = [
 
 ];
 
-const routes: Routes = [];
+const routes: Routes = [
+
+  {
+    path: '',
+    component: HomeComponent, 
+    children: [
+      {
+        path: 'list',
+        component: ProductsListComponent
+      },
+      {
+        path: 'search',
+        component: ProductsSearchComponent
+      },
+
+      {
+        path: '**',
+        redirectTo: 'list',
+        
+      },
+    ]
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
