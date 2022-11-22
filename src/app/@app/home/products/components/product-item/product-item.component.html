@@ -1,1 +1,33 @@
-<p>product-item works!</p>
+<div class="product-card">
+    <div class="product-img">
+        <span class="discount-badge">-12 %</span>
+        <img [src]="product.thumbnail" alt="">
+    </div>
+    <div class="product-info">
+        <h4>
+            {{(product.title.length>20)?
+                (product.title | slice:0:20)+'..':(product.title)}}
+        </h4>
+        <p>
+
+            {{(product.description.length>70)?
+                 (product.description | slice:0:70)+'..':(product.description)}}
+        </p>
+
+        <div class="price">
+            <span class="before"><strong>{{product.price}}</strong> USD</span>
+            <span class="after"><strong>{{product.price}}</strong> USD</span>
+        </div>
+
+        <div class="brand">
+            <p>Brand: <strong>{{product.brand}}</strong></p>
+            <p>Category: <strong>{{product.category}}</strong></p>
+            <p>in stock: <strong>{{product.stock}}</strong></p>
+
+        </div>
+
+        <div class="rate"></div>
+
+        <button>ADD TO CART</button>
+    </div>
+</div>

@@ -32,7 +32,7 @@
 
         <div class="products-list">
 
-            <div class="product-card">
+            <!-- <div *ngFor="let product of productList" class="product-card">
                 <div class="product-img">
                     <span class="discount-badge">-12 %</span>
                     <img src="https://m.media-amazon.com/images/I/61lKQWyMdDL._AC_SX522_.jpg" alt="">
@@ -60,18 +60,20 @@
 
                     <button>ADD TO CART</button>
                 </div>
-            </div>
-            <div class="product-card">
+            </div> -->
+           <ng-container >
 
-            </div>
-            <div class="product-card">
+            <app-product-item  
+            *ngFor="let pro of productList | paginate: { itemsPerPage: 10, currentPage: pageNumber }"
+             [product]="pro">
 
-            </div>
-            <div class="product-card">
-
-            </div>
+            </app-product-item>
+           </ng-container>
         </div>
     </div>
+<div class="row-pagination">
+    <pagination-controls (pageChange)="pageNumber = $event"></pagination-controls>
 
+</div>
 
 </div>

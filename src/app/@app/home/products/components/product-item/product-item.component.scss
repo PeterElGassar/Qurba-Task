@@ -1,0 +1,119 @@
+
+
+  .product-card {
+
+    background-color: blue;
+    height: 580px;
+    width: 282px;
+    margin: 0.7rem;
+    border-radius: 5px;
+
+    background: #FFFFFF;
+    border: 0.5px solid #424242;
+
+    .product-img {
+      height: 257px;
+      width: 282px;
+      background-color: #FFFFFF;
+      border-radius: 5px;
+      position: relative;
+
+      img {
+        width: 282px;
+        border-radius: 5px;
+        height: 100%;
+      }
+
+      .discount-badge {
+        width: 71px;
+        height: 23px;
+        background: #56d9d9e8;
+        border-radius: 4px;
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+
+        text-align: center;
+        color: #344054;
+        position: absolute;
+        top: 7%;
+        left: 7%;
+      }
+    }
+
+    .product-info {
+      padding:0 1rem;
+
+      h4 {
+        font-family: "Open Sans";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24px;
+
+        color: #344054;
+        margin: 1rem 0 0;
+      }
+
+      >p {
+        font-family: "Open Sans";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+min-height: 50px;
+        color: #344054;
+      }
+
+      .price {
+        margin: 1.7rem 0 0 0;
+        font-family: "Open Sans";
+
+        .before {
+          text-decoration: line-through;
+          margin: 0 10px 0 0;
+        }
+
+        strong {
+          color: #344054;
+        }
+      }
+
+      .brand {
+        margin: 14px 0;
+
+        strong {
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 17px;
+
+          color: #344054;
+        }
+        p{
+            margin: 5px 0;
+        }
+      }
+
+      button {
+        width: 250px;
+        height: 50px;
+
+
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 22px;
+        /* identical to box height */
+
+        text-align: center;
+        text-transform: uppercase;
+
+        color: #344054;
+
+        background: #56D9D9;
+        border-radius: 4px;
+        border: none;
+      }
+    }
+  }

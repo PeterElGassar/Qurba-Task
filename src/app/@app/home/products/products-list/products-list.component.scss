@@ -78,17 +78,21 @@
       }
     }
   }
+
 }
 
 
 
 
-.row {
+.row,.row-pagination {
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
-
+.row-pagination{
+  justify-content: center;
+  margin: 2rem 0;
+}
 .products-list {
   width: 75%;
   display: flex;
