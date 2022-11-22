@@ -12,7 +12,7 @@ export class ProductsListComponent implements OnInit {
 
   productList: any;
   pageNumber:number=1
-  constructor(@Self() private productsService: ProductsService) { }
+  constructor(private productsService: ProductsService) { }
 
   ngOnInit(): void {
     this.getAllProducts();

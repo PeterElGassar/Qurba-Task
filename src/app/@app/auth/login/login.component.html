@@ -23,23 +23,31 @@
         </div>
 
         <div class="form-content">
-            <form  >
+            <form  [formGroup]="loginForm" (ngSubmit)="login()" >
                 <div class="input-field">
+                    
                     <div class="input-file-base">
-                        <label for="email">Email</label>
-                        <input id="email" type="email">
+                       <h4>{{this.errorMessage}}</h4>
                     </div>
+
+
+                    <div class="input-file-base">
+                        <label for="username">UserName</label>
+                        <input id="username" type="text" formControlName="username">
+                    </div>
+
+
                     <div class="input-file-base">
                         <label for="pssword">Password</label>
-                        <input id="password" type="password">
+                        <input id="password" type="password" formControlName="password">
                     </div>
                 </div>
-
+                <div class="action">
+                    <button type="submit">Sign in</button>
+                </div>
             </form>
         
-            <div class="action">
-                <button>Sign in</button>
-            </div>
+
         </div>
 
 
