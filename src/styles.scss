@@ -1,9 +1,23 @@
-*{
-    text-decoration: none;
-    color: #98A2B3;
-
+* {
+  text-decoration: none;
+  color: #98A2B3;
 }
-body{
-    margin: 0;
-    padding: 0;
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label,
+button,
+a {
+  font-family: "Open Sans" !important;
+  font-style: normal !important;
+}
+
+body {
+  margin: 0;
+  padding: 0;
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/@core/data/User';
 import { AuthService } from '../auth.service';
 
@@ -11,42 +11,37 @@ import { AuthService } from '../auth.service';
   providers: [AuthService]
 })
 export class LoginComponent implements OnInit {
+  returnUrl: string;
 
-  constructor(private authService: AuthService, private fb: FormBuilder, private router: Router) { }
+  constructor(private authService: AuthService,
+    private fb: FormBuilder,
+    private router: Router, private activeRoute: ActivatedRoute) {
+
+
+  }
   loginForm: FormGroup;
   errorMessage: string = '';
   ngOnInit(): void {
+    this.returnUrl = this.activeRoute.snapshot.queryParams.returnUrl || '/home'
     this.initialLoginForm();
   }
 
 
   initialLoginForm() {
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required]],//'B087'
-      password: ['', [Validators.required]]//123
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]]
     });
   }
 
   login(): void {
-    debugger;
     this.authService.Login(this.loginForm.getRawValue()).subscribe(
-      (user: any) => {
-        debugger;
-        console.log('User logged in');
-        this.router.navigateByUrl('/home/list');
-
-        if (user) {
-
-          localStorage.setItem('token', user.token);
-          this.authService.currentUserSubject.next(user);
-          console.log(user);
-        }
-
+      () => {
+        this.router.navigateByUrl(this.returnUrl);     
       },
       (error: any) => {
         this.errorMessage = 'Invalid User Name or Password';
       }
-
     );
   }
 }

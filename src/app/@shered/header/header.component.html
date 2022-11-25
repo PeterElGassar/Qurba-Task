@@ -21,15 +21,43 @@
 
             <ul class="navigation">
                 <li>
-                    <a href="/home">Home</a>
+                    <a routerLink="/home/list">Home</a>
                 </li>
             </ul>
 
        
         </div>
         <div class="navigation-action">
-            <a href="/login">Login</a>
+            <a routerLink="/auth/login" *ngIf="(currentUser$ | async) === null">Login</a>
+            
+
+            <div class="search-input-wrapper" *ngIf="(currentUser$ | async) !== null">
+
+                <button  (click)="onSearchProduct()">
+                    <i class="fas fa-search fa-1x "></i>
+                  </button>
+                <input type="text" class="form-control-search" [(ngModel)]="searchTerm"
+                  placeholder="Search">
+
+            </div>
+
         </div>
+        <div class="cart"  *ngIf="(currentUser$ | async) !== null">
+
+           
+            <div class="cart-wrapper">
+                <span class="cart-count">{{this.cartProducts.length}}</span>
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+            <div class="links">
+                <a routerLink="/auth/login" *ngIf="(currentUser$ | async) !== null">Account</a>
+            </div>
+            
+        </div>
+        <!-- <h3 *ngIf="(currentUser$ | async) !== null">
+            {{(currentUser$ | async)?.username}}
+        </h3> -->
+        <!-- <h3 *ngIf="currentUser">{{currentUser.username}}</h3> -->
     </section>
 
 </header>

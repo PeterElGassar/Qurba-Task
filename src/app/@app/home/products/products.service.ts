@@ -11,9 +11,17 @@ export class ProductsService {
 
   constructor(private http: HttpClient) {}
 
-  getAll(url: string): Observable<any> {
-    const fullUrl: string = this.apiUrlPrefix + url;
-    return this.http.get(fullUrl);
+  getAllProducts(): Observable<any> {
+    return this.http.get(`${this.apiUrlPrefix}products`);
   }
+
+  
+
+  getAllProductsCategories(): Observable<any> {
+    return this.http.get(`${this.apiUrlPrefix}products/categories`);
+
+  }
+
+
 
 }
