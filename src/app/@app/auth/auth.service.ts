@@ -20,10 +20,9 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   Login(val: any) {
-    return this.http.post(this.apiUrlPrefix + `auth/login`, val).pipe(
+    return this.http.post(`${this.apiUrlPrefix}auth/login`, val).pipe(
       map((user: any) => {
         if (user) {
-
           localStorage.setItem('token', user.token);
           localStorage.setItem('userInfo', JSON.stringify(user));
           this.currentUserSubject.next(user);

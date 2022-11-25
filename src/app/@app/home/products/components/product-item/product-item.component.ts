@@ -9,19 +9,19 @@ import { Product } from 'src/app/@core/data/Product';
 
 export class ProductItemComponent implements OnInit {
   @Input() product: Product = {
-    //initialize description only for use length in html template
+    //initialize description & title for use length in html template
     description: '',
     title: '',
   };
 
-  @Output() onAddToCart: EventEmitter<any> = new EventEmitter<any>();;
+  @Output() onAddToCart: EventEmitter<Product> = new EventEmitter<Product>();;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  addToCart(productItem: any) {
+  addToCart(productItem: Product) {
     this.onAddToCart.emit(productItem);
   }
 }

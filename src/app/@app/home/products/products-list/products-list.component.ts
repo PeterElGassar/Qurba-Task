@@ -2,6 +2,7 @@ import { ProductsService } from './../products.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/@app/auth/auth.service';
 import { ActivatedRoute } from '@angular/router';
+import { Product } from 'src/app/@core/data/Product';
 
 @Component({
   selector: 'app-products-list',
@@ -12,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductsListComponent implements OnInit {
 
-  productList: any;
+  productList: Product[]=[];
   categories: any;
   pageNumber: number = 1
   filteredProducts: any[];
@@ -106,7 +107,7 @@ export class ProductsListComponent implements OnInit {
   }
 
 
-  onSearch(val: any) {
+  onSearch(val: string) {
     this.filteredProducts = this.filteredArticalsList(val);
   }
 
@@ -120,7 +121,7 @@ export class ProductsListComponent implements OnInit {
   }
 
 //add to cart event fire by EventEmitter
-  addToCart(item: any) {
+  addToCart(item: Product) {
     if ("cart" in localStorage) {
       this.cartProducts = JSON.parse(localStorage.getItem("cart")!);
       let isExist = this.isInCart(item, this.cartProducts)

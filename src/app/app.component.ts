@@ -6,16 +6,12 @@ import { AuthService } from './@app/auth/auth.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent  {
   title = 'Qurba-task';
 
   constructor(private authService: AuthService) {
     this.authService.loadCurrentUser();
 
    }
-  ngOnInit(): void {
-    this.authService.currentUser$.subscribe(res=>{
-    })  
-  }
 
 }

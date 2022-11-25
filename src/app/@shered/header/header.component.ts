@@ -1,6 +1,8 @@
+import { Product } from './../../@core/data/Product';
 import { Component, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { AuthService } from 'src/app/@app/auth/auth.service';
 import { Observable } from 'rxjs';
+import { User } from 'src/app/@core/data/User';
 
 @Component({
   selector: 'app-header',
@@ -9,9 +11,10 @@ import { Observable } from 'rxjs';
   providers: [AuthService]
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  currentUser: any = null;
+  currentUser: User = {};
   searchTerm: string = '';
-  @Input() cartProducts:any[];
+
+  @Input() cartProducts: Product[];
   @Output() onSearch: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(private authService: AuthService) {
@@ -19,24 +22,24 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authService.loadCurrentUser();
 
   }
-  currentUser$: Observable<any>;
+  currentUser$: Observable<User>;
 
   ngOnInit(): void {
 
     this.authService.currentUser$.subscribe(res => {
       this.currentUser = res;
     });
-this.initalCart();
+    this.initalCart();
   }
   onSearchProduct() {
     this.onSearch.emit(this.searchTerm)
   }
 
-  getCurrentLoggedInUser() {
-    let user: any = localStorage.getItem("userInfo");
-    if (user !== null || user !== undefined)
-      this.currentUser = JSON.parse(user);
-  }
+  // getCurrentLoggedInUser() {
+  //   let user: User = localStorage.getItem("userInfo")!;
+  //   if (user !== null || user !== undefined)
+  //     this.currentUser = JSON.parse(user);
+  // }
 
 
   initalCart() {
